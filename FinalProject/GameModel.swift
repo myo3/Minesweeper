@@ -39,8 +39,10 @@ class GameModel: NSObject {
             var y: Int!
             x = Int(arc4random_uniform(UInt32(rows)))
             y = Int(arc4random_uniform(UInt32(columns)))
-            tiles[x][y].mine = true
-            numMines -= 1
+            if tiles[x][y].mine == false {
+                tiles[x][y].mine = true
+                numMines -= 1
+            }
         }
         
         //find the num of mines next to each time

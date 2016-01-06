@@ -62,7 +62,7 @@ class ViewController: UIViewController, GameModelDelegate, GameboardDelegate {
         
         //label mines
         let minesNameLabel = UILabel(frame: CGRectMake(statusBoard.frame.minX + statusBoard.bounds.width/4 - 50, statusBoard.frame.maxY - 50, 75, 50))
-        minesNameLabel.textAlignment = NSTextAlignment.Center
+        minesNameLabel.textAlignment = NSTextAlignment.Left
         minesNameLabel.textColor = UIColor.blackColor()
         //minesNameLabel.backgroundColor = UIColor.redColor()
         minesNameLabel.font = UIFont(name: "DesignerBlock", size: 30)
@@ -80,7 +80,7 @@ class ViewController: UIViewController, GameModelDelegate, GameboardDelegate {
         
         //label timer
         let timerLabel = UILabel(frame: CGRectMake(statusBoard.bounds.width - statusBoard.bounds.width/4 - 15, statusBoard.frame.maxY - 50, 75, 50))
-        timerLabel.textAlignment = NSTextAlignment.Center
+        timerLabel.textAlignment = NSTextAlignment.Left
         timerLabel.textColor = UIColor.blackColor()
 //        timerLabel.backgroundColor = UIColor.redColor()
         timerLabel.font = UIFont(name: "DesignerBlock", size: 30)
@@ -131,7 +131,7 @@ class ViewController: UIViewController, GameModelDelegate, GameboardDelegate {
         let pauseButton = UIButton()
         pauseButton.frame = CGRectMake(flagButton.frame.minX - 10 - buttonWidth, flagButton.frame.minY, buttonWidth, 70)
         pauseButton.backgroundColor = UIColor(red:0.65, green:0.65, blue:0.65, alpha:1.0)
-        pauseButton.setImage(UIImage(named: "flag on"), forState: UIControlState.Normal)
+        pauseButton.setImage(UIImage(named: "pause"), forState: UIControlState.Normal)
         //pauseButton.addTarget(self, action: "pauseTimer:", forControlEvents: .TouchUpInside)
         self.view.addSubview(pauseButton)
         
@@ -154,17 +154,14 @@ class ViewController: UIViewController, GameModelDelegate, GameboardDelegate {
                 gameboard?.gameOver(tappedTile)
                 changeFace(false)
                 invalidate()
-                updateScoreWithTime(time)
                 
             } else{
-                updateScore(tappedTile)
                 model?.incrementCount()
                 if model!.finished {
                     gameboard?.youWin(tappedTile)
                     changeFace(true)
                     invalidate()
-                    updateScoreWithTime(time)
-                    delegate?.updateHighScore(self, score: score)
+                    delegate?.updateHighScore(self, score: time)
                 }
             }
     }
@@ -176,14 +173,6 @@ class ViewController: UIViewController, GameModelDelegate, GameboardDelegate {
             mines += 1
         }
         minesNumLabel.text = "\(mines)"
-    }
-    //Scoreboard methods
-    func updateScore(tappedTile: TileButton)  {
-        score += tappedTile.numOfNeighboringMines
-    }
-    
-    func updateScoreWithTime(time: Int){
-        score += time
     }
     
     func changeFace(win: Bool){
