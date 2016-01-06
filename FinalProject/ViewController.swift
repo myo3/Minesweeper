@@ -48,6 +48,16 @@ class ViewController: UIViewController, GameModelDelegate, GameboardDelegate {
         //create game model
         model = GameModel(delegate: self, dimension: dimension, mines: mines, tiles: (gameboard?.tiles!)!)
         
+        //create New Game button
+        let quitButton = UIButton()
+        quitButton.frame = CGRectMake((gameboard?.frame.maxX)! - 115, (gameboard?.frame.maxY)! + 10, 115, 70)
+        quitButton.backgroundColor = UIColor(red:0.65, green:0.65, blue:0.65, alpha:1.0)
+        quitButton.setTitle("QUIT", forState: .Normal)
+        quitButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        quitButton.titleLabel?.font = UIFont(name: "DesignerBlock", size: 40)
+        quitButton.addTarget(self, action: "quit:", forControlEvents: .TouchUpInside)
+        self.view.addSubview(quitButton)
+        
         //create Status Board
         let statusBoard = UIImageView(frame: CGRectMake(10, 20, view.bounds.width - 20, (gameboard?.frame.minY)! - 30))
         statusBoard.backgroundColor = UIColor(red:0.65, green:0.65, blue:0.65, alpha:1.0)
@@ -97,43 +107,14 @@ class ViewController: UIViewController, GameModelDelegate, GameboardDelegate {
         timeLabel.text = "00:00"
         self.view.addSubview(timeLabel)
         
-        let buttonWidth = ((gameboard?.bounds.width)! - 30)/4
-        //create quit button
-        let quitButton = UIButton()
-        quitButton.frame = CGRectMake((gameboard?.frame.maxX)! - buttonWidth, (gameboard?.frame.maxY)! + 10, buttonWidth, 70)
-        quitButton.backgroundColor = UIColor(red:0.65, green:0.65, blue:0.65, alpha:1.0)
-        quitButton.setTitle("QUIT", forState: .Normal)
-        quitButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        quitButton.titleLabel?.font = UIFont(name: "DesignerBlock", size: 40)
-        quitButton.addTarget(self, action: "quit:", forControlEvents: .TouchUpInside)
-        self.view.addSubview(quitButton)
-        
-        //create new game button
-        let newGameButton = UIButton()
-        newGameButton.frame = CGRectMake(quitButton.frame.minX - 10 - buttonWidth, quitButton.frame.minY, buttonWidth, 70)
-        newGameButton.backgroundColor = UIColor(red:0.65, green:0.65, blue:0.65, alpha:1.0)
-        newGameButton.titleLabel?.textAlignment = NSTextAlignment.Center
-        newGameButton.titleLabel?.font = UIFont(name: "DesignerBlock", size: 40)
-        newGameButton.setTitle("NEW", forState: .Normal)
-        newGameButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        //newGameButton.addTarget(self, action: "newGame", forControlEvents: .TouchUpInside)
-        self.view.addSubview(newGameButton)
-        
         //create flag button
         flagButton = UIButton()
-        flagButton.frame = CGRectMake(newGameButton.frame.minX - 10 - buttonWidth, newGameButton.frame.minY, buttonWidth, 70)
+        flagButton.frame = CGRectMake((gameboard?.frame.minX)!, quitButton.frame.minY, 115, 70)
         flagButton.backgroundColor = UIColor(red:0.65, green:0.65, blue:0.65, alpha:1.0)
         flagButton.setImage(UIImage(named: "flag on"), forState: UIControlState.Normal)
+
         flagButton.addTarget(self, action: "flagButtonPressed:", forControlEvents: .TouchUpInside)
         self.view.addSubview(flagButton)
-        
-        //create pause button
-        let pauseButton = UIButton()
-        pauseButton.frame = CGRectMake(flagButton.frame.minX - 10 - buttonWidth, flagButton.frame.minY, buttonWidth, 70)
-        pauseButton.backgroundColor = UIColor(red:0.65, green:0.65, blue:0.65, alpha:1.0)
-        pauseButton.setImage(UIImage(named: "pause"), forState: UIControlState.Normal)
-        //pauseButton.addTarget(self, action: "pauseTimer:", forControlEvents: .TouchUpInside)
-        self.view.addSubview(pauseButton)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
