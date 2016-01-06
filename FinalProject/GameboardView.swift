@@ -7,8 +7,9 @@
 //
 
 import UIKit
-protocol GameboardDelegate: class {
+protocol GameboardDelegate {
     func updateGame(tappedTile: TileButton)
+    func updateMines(tappedTile: TileButton)
 }
 
 class GameboardView: UIView {
@@ -65,18 +66,29 @@ class GameboardView: UIView {
     }
     
     func tileTapped(sender: TileButton!) {
-        if !sender.revealed{
-            sender.revealed = true
-            sender.revealSelf()
-            
-            //reveal adjacent non-mine tiles
-            for tile in sender.adjacentNonMines{
-                if !tile.revealed{
-                    tile.revealed = true
-                    tile.revealSelf()
+        let vc = delegate as! ViewController
+        if (!vc.flagged){
+            if !sender.revealed && !sender.flagged{
+                sender.revealed = true
+                sender.revealSelf()
+                sender.userInteractionEnabled = false
+                
+                if sender.numOfNeighboringMines == 0 {
+                    for tile in sender.adjacentNonMines{
+                        if tile.userInteractionEnabled {
+                            tileTapped(tile)
+                        }
+                    }
                 }
+                //reveal adjacent non-mine tiles
+                
+                self.delegate?.updateGame(sender)
             }
-            self.delegate?.updateGame(sender)
+        } else{
+            if !sender.revealed{
+                sender.flagSelf()
+                self.delegate?.updateMines(sender)
+            }
         }
     }
     

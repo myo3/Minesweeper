@@ -16,10 +16,9 @@
 		DD1D84ED1C08D1A60006EC30 /* FinalProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1D84EC1C08D1A60006EC30 /* FinalProjectUITests.swift */; };
 		DD8F52301C0B84E800ECAD91 /* GameboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F522F1C0B84E800ECAD91 /* GameboardView.swift */; settings = {ASSET_TAGS = (); }; };
 		DD8F52321C0B850B00ECAD91 /* TileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F52311C0B850B00ECAD91 /* TileButton.swift */; settings = {ASSET_TAGS = (); }; };
-		DD8F52341C0B85A600ECAD91 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F52331C0B85A600ECAD91 /* StatusView.swift */; settings = {ASSET_TAGS = (); }; };
 		DD8F52361C0B863800ECAD91 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F52351C0B863800ECAD91 /* GameModel.swift */; settings = {ASSET_TAGS = (); }; };
 		DD8F523C1C0BD78D00ECAD91 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F523B1C0BD78D00ECAD91 /* StartViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DD8F523E1C0C2EE400ECAD91 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F523D1C0C2EE400ECAD91 /* TimerView.swift */; settings = {ASSET_TAGS = (); }; };
+		DDBFD0EB1C109F3800F57FA6 /* Designer Block.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDBFD0EA1C109F3800F57FA6 /* Designer Block.otf */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +54,9 @@
 		DD1D84EE1C08D1A60006EC30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD8F522F1C0B84E800ECAD91 /* GameboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameboardView.swift; sourceTree = "<group>"; };
 		DD8F52311C0B850B00ECAD91 /* TileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileButton.swift; sourceTree = "<group>"; };
-		DD8F52331C0B85A600ECAD91 /* StatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		DD8F52351C0B863800ECAD91 /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		DD8F523B1C0BD78D00ECAD91 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		DD8F523D1C0C2EE400ECAD91 /* TimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		DDBFD0EA1C109F3800F57FA6 /* Designer Block.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Designer Block.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +107,7 @@
 		DD1D84CB1C08D1A50006EC30 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				DDBFD0EA1C109F3800F57FA6 /* Designer Block.otf */,
 				DD1D84CC1C08D1A50006EC30 /* AppDelegate.swift */,
 				DD1D84CE1C08D1A50006EC30 /* ViewController.swift */,
 				DD8F52351C0B863800ECAD91 /* GameModel.swift */,
@@ -119,8 +118,6 @@
 				DD1D84D81C08D1A50006EC30 /* Info.plist */,
 				DD8F522F1C0B84E800ECAD91 /* GameboardView.swift */,
 				DD8F52311C0B850B00ECAD91 /* TileButton.swift */,
-				DD8F52331C0B85A600ECAD91 /* StatusView.swift */,
-				DD8F523D1C0C2EE400ECAD91 /* TimerView.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -251,6 +248,7 @@
 			files = (
 				DD1D84D71C08D1A50006EC30 /* LaunchScreen.storyboard in Resources */,
 				DD1D84D41C08D1A50006EC30 /* Assets.xcassets in Resources */,
+				DDBFD0EB1C109F3800F57FA6 /* Designer Block.otf in Resources */,
 				DD1D84D21C08D1A50006EC30 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,8 +279,6 @@
 				DD8F52321C0B850B00ECAD91 /* TileButton.swift in Sources */,
 				DD1D84CF1C08D1A50006EC30 /* ViewController.swift in Sources */,
 				DD1D84CD1C08D1A50006EC30 /* AppDelegate.swift in Sources */,
-				DD8F52341C0B85A600ECAD91 /* StatusView.swift in Sources */,
-				DD8F523E1C0C2EE400ECAD91 /* TimerView.swift in Sources */,
 				DD8F52361C0B863800ECAD91 /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

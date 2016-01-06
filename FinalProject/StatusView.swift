@@ -20,13 +20,15 @@ class StatusView: UIView {
         
         //set up scoreboard
         let scoreboardImage = UIImage(named: "Scoreboard")
-        let scoreboardImageView = UIImageView(frame: CGRect(x: 0, y: -40, width: statusFrame!.width, height: statusFrame!.height))
+        //x: 0, y: -40
+        let scoreboardImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: statusFrame!.width, height: statusFrame!.height))
         scoreboardImageView.contentMode = .ScaleAspectFit
         scoreboardImageView.image = scoreboardImage
         self.addSubview(scoreboardImageView)
         
         //set up score number
-        label = UILabel(frame: CGRect(x: 100, y: -37, width: statusFrame!.width * 0.75, height: statusFrame!.height))
+        //x: 100, y: -37
+        label = UILabel(frame: CGRect(x: 0, y: 0, width: statusFrame!.width * 0.75, height: statusFrame!.height))
         label?.textAlignment = NSTextAlignment.Left
         label?.textColor = UIColor.blackColor()
         label?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 30)
@@ -60,7 +62,9 @@ class StatusView: UIView {
         let gameStatusImageView = UIImageView(frame: CGRect(x: 0, y: 35, width: statusFrame!.width, height: statusFrame!.height))
         gameStatusImageView.contentMode = .ScaleAspectFit
         gameStatusImageView.image = gameStatusImage
+        gameStatusImageView.alpha = 0
         self.addSubview(gameStatusImageView)
+        UIView.animateWithDuration(2.3, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations:{gameStatusImageView.alpha = 1.0}, completion: nil)
     }
     /*
     // Only override drawRect: if you perform custom drawing.

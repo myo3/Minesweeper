@@ -50,7 +50,6 @@ class GameModel: NSObject {
                 tiles[i][j].numOfNeighboringMines = num
             }
         }
-        
     }
     
     func getNumOfMines(tile: TileButton) -> Int {
@@ -78,8 +77,7 @@ class GameModel: NSObject {
     func incrementCount(){
         count += 1
         if count == rows * columns - mines{
-            finished = false
+            finished = true
         }
     }
-
 }

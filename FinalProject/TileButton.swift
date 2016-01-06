@@ -16,6 +16,7 @@ class TileButton: UIButton {
     
     var numOfNeighboringMines: Int = 0
     var revealed: Bool = false
+    var flagged: Bool = false
     
     var adjacentNonMines: [TileButton] = [TileButton]()
     
@@ -31,6 +32,19 @@ class TileButton: UIButton {
             self.setImage(UIImage(named: "mine"), forState: UIControlState.Selected)
         } else{
             self.setImage(UIImage(named: "\(numOfNeighboringMines)"), forState: UIControlState.Normal)
+        }
+    }
+    
+    func flagSelf(){
+        if !revealed{
+            flagged = !flagged
+            var name = ""
+            if flagged{
+                name = "flag on"
+            } else{
+                name = "tile"
+            }
+            self.setImage(UIImage(named: name), forState: UIControlState.Normal)
         }
     }
 }

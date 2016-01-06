@@ -16,27 +16,19 @@ class StartViewController: UIViewController, ViewControllerDelegate {
     var gridDimensions: Int = 8
     var mines: Int = 10
     
+    var customSC: UISegmentedControl = UISegmentedControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         let viewWidth = view.bounds.width
         let viewHeight = view.bounds.height
         
-        //create start game buton
-        let startGameButton = UIButton()
-        startGameButton.frame = CGRectMake(viewWidth/2 - 37.5, viewHeight/2 - 37.5, 75,75)
-        startGameButton.setBackgroundImage(UIImage(named: "Start"), forState: UIControlState.Normal)
-        startGameButton.addTarget(self, action: "startGame", forControlEvents: .TouchUpInside)
-        self.view.addSubview(startGameButton)
-        
         //create UISegmented control
         let items = ["8 x 8", "10 x 10", "12 x 12"]
-        let customSC = UISegmentedControl(items: items)
-        customSC.selectedSegmentIndex = 0
+        customSC = UISegmentedControl(items: items)
+        //customSC.selectedSegmentIndex = 0
         customSC.frame = CGRectMake(10, viewHeight * 1/4, viewWidth - 20, viewHeight*0.1)
         customSC.tintColor = UIColor.clearColor()
         customSC.addTarget(self, action: "selectGrid:", forControlEvents: .ValueChanged)
@@ -44,6 +36,16 @@ class StartViewController: UIViewController, ViewControllerDelegate {
         customSC.setImage(UIImage(named: "10x10"), forSegmentAtIndex: 1)
         customSC.setImage(UIImage(named: "12x12"), forSegmentAtIndex: 2)
         self.view.addSubview(customSC)
+        
+        //create start game buton
+        let startGameButton = UIButton()
+        startGameButton.frame = CGRectMake(view.bounds.width/2 - 72, customSC.frame.maxY + 20, 145, 80)
+        startGameButton.backgroundColor = UIColor(red:0.65, green:0.65, blue:0.65, alpha:1.0)
+        startGameButton.setTitle("START", forState: .Normal)
+        startGameButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        startGameButton.titleLabel?.font = UIFont(name: "DesignerBlock", size: 40)
+        startGameButton.addTarget(self, action: "startGame", forControlEvents: .TouchUpInside)
+        self.view.addSubview(startGameButton)
         
         //set up scoreboard
         let highScoreboardImage = UIImage(named: "High Scoreboard")
@@ -56,11 +58,16 @@ class StartViewController: UIViewController, ViewControllerDelegate {
         highScoreLabel = UILabel(frame: CGRect(x: 175, y: -17, width: highScoreboardImageView.frame.width * 0.75, height: highScoreboardImageView.frame.height))
         highScoreLabel.textAlignment = NSTextAlignment.Left
         highScoreLabel.textColor = UIColor.blackColor()
-        highScoreLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 30)
+        highScoreLabel.font = UIFont(name: "DesignerBlock", size: 30)
         highScoreLabel.text = "\(highScore)"
         self.view.addSubview(highScoreLabel)
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -85,7 +92,7 @@ class StartViewController: UIViewController, ViewControllerDelegate {
             sender.setImage(UIImage(named: "8x8"), forSegmentAtIndex: 0)
             sender.setImage(UIImage(named: "10x10"), forSegmentAtIndex: 1)
             gridDimensions = 12
-            mines = 35
+            mines = 50
         default:
             sender.setImage(UIImage(named: "8x8"), forSegmentAtIndex: 0)
             sender.setImage(UIImage(named: "10x10"), forSegmentAtIndex: 1)
@@ -105,10 +112,38 @@ class StartViewController: UIViewController, ViewControllerDelegate {
         self.presentViewController(gameViewController, animated: true, completion: nil)
     }
     
-    func myVCDidFinish(controller: ViewController,score: Int){
+    func updateHighScore(controller: ViewController,score: Int){
         if score > highScore{
             highScore = score
             highScoreLabel.text = "\(highScore)"
+        }
+    }
+    
+    func myVCDidFinish(controller: ViewController){
+        //update  level selection bar
+        switch controller.dimension{
+        case 8:
+            customSC.setImage(UIImage(named: "8x8s"), forSegmentAtIndex: 0)
+            customSC.setImage(UIImage(named: "10x10"), forSegmentAtIndex: 1)
+            customSC.setImage(UIImage(named: "12x12"), forSegmentAtIndex: 2)
+            gridDimensions = 8
+            mines = 10
+        case 10:
+            customSC.setImage(UIImage(named: "10x10s"), forSegmentAtIndex: 1)
+            customSC.setImage(UIImage(named: "8x8"), forSegmentAtIndex: 0)
+            customSC.setImage(UIImage(named: "12x12"), forSegmentAtIndex: 2)
+            gridDimensions = 10
+            mines = 25
+        case 12:
+            customSC.setImage(UIImage(named: "12x12s"), forSegmentAtIndex: 2)
+            customSC.setImage(UIImage(named: "8x8"), forSegmentAtIndex: 0)
+            customSC.setImage(UIImage(named: "10x10"), forSegmentAtIndex: 1)
+            gridDimensions = 12
+            mines = 35
+        default:
+            customSC.setImage(UIImage(named: "8x8"), forSegmentAtIndex: 0)
+            customSC.setImage(UIImage(named: "10x10"), forSegmentAtIndex: 1)
+            customSC.setImage(UIImage(named: "12x12"), forSegmentAtIndex: 2)
         }
     }
     /*
