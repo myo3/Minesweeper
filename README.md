@@ -2,7 +2,7 @@
 >###*CUAppDev Training Program Project #7 Fall 2015*
 
 ## Description
-Taking it back to the classics, *Minesweeper* provides a mobile arena for this timeless puzzle game.
+Taking it back to the classics, *Minesweeper* provides a mobile arena for this timeless puzzle game
 
 ## Features 
 
